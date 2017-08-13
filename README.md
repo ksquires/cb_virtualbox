@@ -1,1 +1,4 @@
-# cb_virtualbox
+# virtualbox
+
+TODO: Enter the cookbook description here.
+

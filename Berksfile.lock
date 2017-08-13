@@ -1,0 +1,7 @@
+DEPENDENCIES
+  virtualbox
+    path: .
+    metadata: true
+
+GRAPH
+  virtualbox (0.1.1)

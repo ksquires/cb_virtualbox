@@ -15,4 +15,10 @@ yum_repository 'virtualbox' do
   description 'VirtualBox'
 end
 
-package 'VirtualBox-5.1'
+package 'VirtualBox-5.1' do
+  action :remove
+end
+
+package 'VirtualBox-5.2' do
+  action :install
+end

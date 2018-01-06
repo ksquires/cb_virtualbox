@@ -16,15 +16,19 @@ describe 'virtualbox::default' do
     end
 
     it 'creates virtualbox repo with proper info ' do
-       expect(chef_run).to create_yum_repository('virtualbox').with(baseurl: 'http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch')
-       expect(chef_run).to create_yum_repository('virtualbox').with(enabled: true)
-       expect(chef_run).to create_yum_repository('virtualbox').with(gpgcheck: true)
-       expect(chef_run).to create_yum_repository('virtualbox').with(repo_gpgcheck: true)
-       expect(chef_run).to create_yum_repository('virtualbox').with(gpgkey: 'https://www.virtualbox.org/download/oracle_vbox.asc')
+      expect(chef_run).to create_yum_repository('virtualbox').with(baseurl: 'http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch')
+      expect(chef_run).to create_yum_repository('virtualbox').with(enabled: true)
+      expect(chef_run).to create_yum_repository('virtualbox').with(gpgcheck: true)
+      expect(chef_run).to create_yum_repository('virtualbox').with(repo_gpgcheck: true)
+      expect(chef_run).to create_yum_repository('virtualbox').with(gpgkey: 'https://www.virtualbox.org/download/oracle_vbox.asc')
+    end
+
+    it 'removes vitualbox package' do
+      expect(chef_run).to remove_package('VirtualBox-5.1')
     end
 
     it 'installs vitualbox package' do
-      expect(chef_run).to install_package('VirtualBox-5.1')
+      expect(chef_run).to install_package('VirtualBox-5.2')
     end
 
     it 'converges successfully' do

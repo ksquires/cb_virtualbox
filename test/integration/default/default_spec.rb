@@ -8,5 +8,9 @@ describe file('/etc/yum.repos.d/virtualbox.repo') do
 end
 
 describe package('VirtualBox-5.1') do
+  it { should be_removed}
+end
+
+describe package('VirtualBox-5.2') do
   it { should be_installed }
 end

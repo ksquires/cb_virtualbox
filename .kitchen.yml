@@ -5,6 +5,9 @@ driver:
 provisioner:
   name: chef_solo
 
+verifier:
+  name: inspec
+
 platforms:
   - name: centos-7.4
 
@@ -13,3 +16,6 @@ suites:
     run_list:
       - recipe[virtualbox::default]
     attributes:
+    verifier:
+      inspec_tests:
+        - test/smoke/default

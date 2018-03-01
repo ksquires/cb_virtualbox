@@ -24,18 +24,22 @@ describe 'virtualbox::default' do
           runner.converge(described_recipe)
         end
 
-        it 'executes a command' do
-	  allow(File).to receive(:exist?).and_call_original
-	  allow(File).to receive(:exist?).with("/etc/repos.d/virtualbox.repo").and_return(true)
-	  expect(chef_run).to run_execute('/usr/bin/wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo')  
-	end
+#        it 'executes a command' do
+#	  allow(File).to receive(:exist?).and_call_original
+#	  allow(File).to receive(:exist?).with("/etc/repos.d/virtualbox.repo").and_return(true)
+#	  expect(chef_run).to run_execute('/usr/bin/wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo')  
+#	end
 
-        it 'removes vitualbox package' do
-          expect(chef_run).to remove_package('VirtualBox-5.1')
-        end
+#	it 'executes a command' do
+#	  expect(chef_run).to run_execute('vboxmanage list runningvms | sed -r \'s/.*\{(.*)\}/\1/\' | xargs -L1 -I {} VBoxManage controlvm {} savestate')
+#	end
 
-        it 'installs vitualbox package' do
-          expect(chef_run).to install_package('VirtualBox-5.2')
+#        it 'removes vitualbox package' do
+#          expect(chef_run).to remove_package('VirtualBox-5.1')
+#        end
+
+        it 'upgrades vitualbox package' do
+          expect(chef_run).to upgrade_package('VirtualBox-5.2')
         end
 
         it 'converges successfully' do

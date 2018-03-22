@@ -6,5 +6,5 @@
 # found at http://inspec.io/docs/reference/resources/
 
 describe package('VirtualBox-5.2') do
-  it { should be_installed}
+  it { should be_installed }
 end

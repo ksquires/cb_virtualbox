@@ -9,10 +9,9 @@ require 'spec_helper'
 describe 'virtualbox::default' do
   platforms = {
     'centos' => {
-      'versions' => ['7.4.1708']
-    }
+      'versions' => ['7.4.1708'],
+    },
   }
-
 
   platforms.keys.each do |platform|
     platforms[platform]['versions'].each do |version|
@@ -23,20 +22,6 @@ describe 'virtualbox::default' do
           runner = ChefSpec::ServerRunner.new(platform: platform, version: version)
           runner.converge(described_recipe)
         end
-
-#        it 'executes a command' do
-#	  allow(File).to receive(:exist?).and_call_original
-#	  allow(File).to receive(:exist?).with("/etc/repos.d/virtualbox.repo").and_return(true)
-#	  expect(chef_run).to run_execute('/usr/bin/wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo')  
-#	end
-
-#	it 'executes a command' do
-#	  expect(chef_run).to run_execute('vboxmanage list runningvms | sed -r \'s/.*\{(.*)\}/\1/\' | xargs -L1 -I {} VBoxManage controlvm {} savestate')
-#	end
-
-#        it 'removes vitualbox package' do
-#          expect(chef_run).to remove_package('VirtualBox-5.1')
-#        end
 
         it 'upgrades vitualbox package' do
           expect(chef_run).to upgrade_package('VirtualBox-5.2')

@@ -9,8 +9,9 @@ node.default['virtualbox']['version'] = '5.2'
 include_recipe 'virtualbox-install::default'
 
 package 'VirtualBox-5.2' do
-  notifies :run, 'execute[kill vms]', :before
-  action :upgrade
+# commenting this out, since we're only doing this for install
+#  notifies :run, 'execute[kill vms]', :before
+  action :install
 end
 
 execute 'kill vms' do
